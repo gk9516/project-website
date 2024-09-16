@@ -3,12 +3,19 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: rgb(0, 0, 32);
+    background: linear-gradient(120deg, rgb(0, 0, 32), rgb(18, 18, 77)); /* Static gradient background */
     color: white;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Parallax image effect */
+.parallax-img {
+    transition: transform 0.1s ease-out;
 }
 
 nav {
@@ -16,7 +23,8 @@ nav {
     justify-content: space-around;
     align-items: center;
     height: 80px;
-    background-color: rgb(18, 18, 77);
+    background-color: rgba(0, 0, 64, 0.9); /* Semi-transparent for sleek design */
+    animation: slideIn 1s ease-in-out;
 }
 
 nav ul {
@@ -32,11 +40,14 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: white;
+    font-size: 1.2rem;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
     color: rgb(153, 153, 226);
-    font-size: 1.04rem;
+    transform: scale(1.1);
 }
 
 main hr {
@@ -44,10 +55,8 @@ main hr {
     background: #9c97f1;
     height: 1.2px;
     margin: 60px 84px;
-}
-
-.left {
-    font-size: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
 }
 
 .firstsection {
@@ -55,21 +64,20 @@ main hr {
     justify-content: space-around;
     align-items: center;
     margin: 150px 0;
-}
-
-.firstsection > div {
-    width: 30%;
-    margin: 30px 0;
+    opacity: 0;
+    animation: fadeInLeft 1.5s forwards;
 }
 
 .leftsection {
-    font-size: 3rem;
-    margin: 30px 0;
+    font-size: 2.5rem; /* Adjusted size */
+    font-weight: 600;
 }
 
 .rightsection img {
     width: 70%;
     margin: 10px 0;
+    opacity: 0;
+    animation: fadeInRight 1.5s forwards;
 }
 
 .purple {
@@ -80,24 +88,125 @@ main hr {
     color: gray;
 }
 
-#element {
-    color: rgb(170, 107, 228);
+/* Description section background and animation */
+.description-background {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 15px;
 }
 
+/* To Do section styling */
 .secondSection {
     max-width: 80vw;
     margin: auto;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
 }
 
-.secondsection h1 {
-    font-size: 1.6rem;
-    margin: auto;
+/* Enhanced table styling */
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.1rem; /* Adjusted size */
+    min-width: 1000px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-table {
-    width: 1000px;
-    border-top-width: 10px;
-    border-bottom-width: 10px;
-    border-left-width: 10px;
-    border-right-width: 10px;
+.styled-table thead tr {
+    background-color: rgb(18, 18, 77);
+    color: #ffffff;
+    text-align: left;
+    animation: fadeInDown 1.5s forwards;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.styled-table tbody tr {
+    background-color: #1f1f1f;
+    transition: background-color 0.3s ease-in;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #2a2a2a;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #444;
+    box-shadow: 0 0 10px rgba(170, 107, 228, 0.7);
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-in effect while scrolling */
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-in-visible {
+    opacity: 1;
 }
